@@ -1,10 +1,10 @@
 import React, { FormEvent, useEffect, useState } from 'react'
-import { Recipe } from '../models/recipe';
+import { Recipe, SearchTerms } from '../models/recipe';
 import { fetchAllData } from '../services/RecipieAPI';
 
 
 interface Prop {
-    onSubmit: (recipe: Recipe) => void;
+    onSubmit: (recipe: SearchTerms) => void;
 }
 
 const SearchForms = ({onSubmit}: Prop) => {
@@ -12,18 +12,17 @@ const SearchForms = ({onSubmit}: Prop) => {
     const [calories, setCalories] = useState("");
     const [label, setLabel] = useState("");
     const [totalTime, setTotalTime] = useState("");
+    const [healthLabel, setHealthLabel] = useState("");
 
 
     const handleSubmit = (e:FormEvent) => {
         e.preventDefault();
-        let results: Recipe = {
+        console.log(healthLabel)
+        let results: SearchTerms = {
             label: label,
-            healthLabel: [],
+            healthLabel: healthLabel,
             calories: parseInt(calories),
-            image: '',
-            url: '',
             totalTime: parseInt(totalTime),
-            ingredients: []
         }
         
         onSubmit(results);
@@ -35,7 +34,8 @@ const SearchForms = ({onSubmit}: Prop) => {
                 <label htmlFor="calories">Search By Max Calorie Count<input type="number" name="calories" value={calories} onChange={(e) => setCalories(e.target.value)} min="0" step="1"/></label>
                 <label htmlFor="label">Search By Name<input type="text" name="label" value={label} onChange={(e) => setLabel(e.target.value)}/></label>
                 <label htmlFor="totalTime">Search By Time to Cook (minutes)<input type="number" name="totalTime" value={totalTime} onChange={(e) => setTotalTime(e.target.value)}/></label>
-                <select name="health-restrictions" id="health-dropdown">
+                <select name="health-restrictions" id="health-dropdown" value={healthLabel} onChange={(e) => setHealthLabel(e.target.value)}>
+                    <option value="">Select one</option>
                     <option value="alcohol-cocktail"> alcohol-cocktail  </option>
                     <option value="alcohol-free"> alcohol-free  </option>
                     <option value="celery-free"> celery-free  </option>
