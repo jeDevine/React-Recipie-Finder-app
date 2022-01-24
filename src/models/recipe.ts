@@ -22,5 +22,4 @@ export interface SearchTerms {
     label: string,
     healthLabel: string,
     calories: number,
-    totalTime: number,
 }
