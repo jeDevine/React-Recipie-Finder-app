@@ -1,4 +1,8 @@
 export interface Recipe {
+    recipe: RecipeThing
+}
+
+export interface RecipeThing {
     label: string;
     healthLabel?: string;
     calories?: number;

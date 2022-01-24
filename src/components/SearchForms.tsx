@@ -1,5 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react'
-import { Recipe, SearchTerms } from '../models/recipe';
+import { Recipe, RecipeThing, SearchTerms } from '../models/recipe';
 import { fetchAllData } from '../services/RecipieAPI';
 
 
@@ -8,8 +8,8 @@ interface Prop {
 }
 
 const SearchForms = ({onSubmit}: Prop) => {
-    const [recipe, setRecipe] = useState<Recipe[]>([]);
-    const [label, setLabel] = useState("chicken");
+    const [recipe, setRecipe] = useState<RecipeThing[]>([]);
+    const [label, setLabel] = useState("");
 
 
 
