@@ -1,7 +1,7 @@
 import React, { FormEvent, useEffect, useState } from 'react'
 import { Recipe, RecipeThing, SearchTerms } from '../models/recipe';
 import { fetchAllData } from '../services/RecipieAPI';
-
+import RecipeRescue from '../RecipeRescue.gif'
 
 interface Prop {
     onSubmit: (searchTerm: SearchTerms) => void;
@@ -24,6 +24,7 @@ const SearchForms = ({onSubmit}: Prop) => {
     
     return (
         <div className='Search-Container'>
+            <img src={RecipeRescue} alt="" id="RRLogo"/>
             <div className='Form-Container'>
                 <form id="The-Form" onSubmit={handleSubmit}>
                     <input type="text" name="label" id="Search-Bar" placeholder='What are you in the mood for?' value={label} onChange={(e) => setLabel(e.target.value)}/>

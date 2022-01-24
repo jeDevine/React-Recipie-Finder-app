@@ -12,9 +12,11 @@ const ResultsList = ({recipes}: Prop) => {
     console.log(recipes)
 
     return (
-        <div className="ResultsList">
+        <div>
             <h2 id="ResultsHeader"> Here's some options for you...</h2>
+            <div className="ResultsList">
             {recipes.map((recipe, i) => (<Result key={i} recipe={recipe.recipe}/>))}
+            </div>
         </div>
     )
 }
