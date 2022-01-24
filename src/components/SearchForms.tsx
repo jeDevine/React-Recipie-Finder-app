@@ -12,6 +12,7 @@ const SearchForms = ({onSubmit}: Prop) => {
     const [label, setLabel] = useState("");
     const [calories, setCalories] = useState("");
     const [diet, setDiet] = useState("");
+    const [showForm, setShowForm] = useState(false);
 
 
 
@@ -30,7 +31,8 @@ const SearchForms = ({onSubmit}: Prop) => {
                     <input type="text" name="label" id="Search-Bar" placeholder='What are you in the mood for?' value={label} onChange={(e) => setLabel(e.target.value)}/>
                     <img src="hand.png" id="chef-hand"/>
                     <button type="submit" id="Search-Button">SEARCH</button>
-                    <div>
+                    <button onClick={()=>setShowForm(true)}>show extra form</button>
+                    {showForm ? <div>
                     <input type="number" value={calories} onChange={(e) => setCalories(e.target.value)} />
                     <input type="radio" name="alcohol-cocktail" id="alcohol-cocktail" value="alcohol-cocktail" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="alcohol-cocktail">Alcohol Cocktail</label>
                     <input type="radio" name="alcohol-free" id="alcohol-free" value="alcohol-free" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="alcohol-free">Alcohol-Free</label>
@@ -68,7 +70,7 @@ const SearchForms = ({onSubmit}: Prop) => {
                     <input type="radio" name="vegan" id="vegan" value="vegan" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="vegan">Vegan</label>
                     <input type="radio" name="vegetarian" id="vegetarian" value="vegetarian" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="vegetarian">Vegetarian</label>
                     <input type="radio" name="wheat-free" id="wheat-free" value="wheat-free" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="wheat-free">Wheat Free</label>
-                    </div>
+                    </div> : <div></div>}
                 </form>
             </div>
         </div>
