@@ -20,6 +20,6 @@ export interface Ingredients {
 
 export interface SearchTerms {
     label: string,
-    healthLabel: string,
+    health: string,
     calories: number,
 }

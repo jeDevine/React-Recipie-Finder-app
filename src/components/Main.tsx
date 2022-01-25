@@ -6,10 +6,10 @@ import SearchForms from './SearchForms';
 
 const Main = () => {
     const [recipes, setRecipes] = useState<Recipe[]>([]);
-    const [search, setSearch] = useState<SearchTerms>({label: "", healthLabel: "", calories: 0});
+    const [search, setSearch] = useState<SearchTerms>({label: "Tasty", health: "", calories: 0});
 
     const handleSubmitForm = (searchTerm: SearchTerms) => {
-        console.log(recipes);
+        console.log(searchTerm);
         setSearch(searchTerm)
     }
     

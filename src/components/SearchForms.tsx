@@ -19,7 +19,7 @@ const SearchForms = ({onSubmit}: Prop) => {
     const handleSubmit = (e:FormEvent) => {
         e.preventDefault();
         let cal: number = parseInt(calories)
-        let labelSearch: SearchTerms = {label: label, healthLabel: diet, calories: cal}
+        let labelSearch: SearchTerms = {label: label, health: diet, calories: cal}
         onSubmit(labelSearch);
     }
     
@@ -29,11 +29,9 @@ const SearchForms = ({onSubmit}: Prop) => {
             <div className='Form-Container'>
                 <form id="The-Form" onSubmit={handleSubmit}>
                     <input type="text" name="label" id="Search-Bar" placeholder='What are you in the mood for?' value={label} onChange={(e) => setLabel(e.target.value)}/>
-                    <img src="hand.png" id="chef-hand"/>
                     <button type="submit" id="Search-Button">SEARCH</button>
-                    <button onClick={()=>setShowForm(true)}>show extra form</button>
-                    {showForm ? <div>
-                    <input type="number" value={calories} onChange={(e) => setCalories(e.target.value)} />
+                    <button id="Extra-Seach-Options-Button" onClick={()=> {!showForm ? setShowForm(true) : setShowForm(false)}}>Advanced Search</button>
+                    {showForm ? <div className='Radio-Buttons'>
                     <input type="radio" name="alcohol-cocktail" id="alcohol-cocktail" value="alcohol-cocktail" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="alcohol-cocktail">Alcohol Cocktail</label>
                     <input type="radio" name="alcohol-free" id="alcohol-free" value="alcohol-free" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="alcohol-free">Alcohol-Free</label>
                     <input type="radio" name="celery-free" id="celery-free" value="celery-free" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="celery-free">Celery Free</label>
@@ -70,6 +68,7 @@ const SearchForms = ({onSubmit}: Prop) => {
                     <input type="radio" name="vegan" id="vegan" value="vegan" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="vegan">Vegan</label>
                     <input type="radio" name="vegetarian" id="vegetarian" value="vegetarian" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="vegetarian">Vegetarian</label>
                     <input type="radio" name="wheat-free" id="wheat-free" value="wheat-free" onChange={(e) => setDiet(e.target.value)} /><label htmlFor="wheat-free">Wheat Free</label>
+                    <input type="number" value={calories} placeholder="Set Max Calories" onChange={(e) => setCalories(e.target.value)} />
                     </div> : <div></div>}
                 </form>
             </div>

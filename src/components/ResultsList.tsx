@@ -9,7 +9,7 @@ interface Prop {
 const ResultsList = ({recipes}: Prop) => {
     const [] = useState();
 
-    console.log(recipes)
+    // console.log(recipes)
 
     return (
         <div>
@@ -20,6 +20,5 @@ const ResultsList = ({recipes}: Prop) => {
         </div>
     )
 }
-
 
 export default ResultsList;

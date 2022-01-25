@@ -3,20 +3,20 @@ import { Recipe, SearchTerms } from '../models/recipe';
 
 export const fetchAllData = (potato: SearchTerms):Promise<Recipe[]> => {
     let params = {};
-    if(potato.healthLabel && potato.calories){
+    if(potato.health && potato.calories){
         params = {
             q: potato.label,
             app_id: "bf7d0545",
             app_key: "aa78c9e273939ff55894856980a67f33",
-            healthLabel: potato.healthLabel,
+            health: potato.health,
             calories: potato.calories
         }
-    } else if (potato.healthLabel) {
+    } else if (potato.health) {
         params = {
             q: potato.label,
             app_id: "bf7d0545",
             app_key: "aa78c9e273939ff55894856980a67f33",
-            healthLabel: potato.healthLabel,
+            health: potato.health,
         }
     } else if (potato.calories) {
         params = {
